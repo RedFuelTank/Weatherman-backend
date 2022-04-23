@@ -10,18 +10,13 @@ import org.springframework.web.reactive.function.client.WebClient;
 @RequestMapping("/weather")
 @RestController
 public class WeatherController {
-    @Autowired
-    WeatherService weatherService;
+    final WeatherService weatherService;
+
+    public WeatherController(WeatherService weatherService) {
+        this.weatherService = weatherService;
+    }
 
     @GetMapping("{sourceId}")
     public void getWeatherBySource(@PathVariable int sourceId, @RequestParam double lat, @RequestParam double lon) {
-//        WebClient webClient = WebClientBuilder.getWebClient("http://api.weatherapi.com/v1" +
-//                "/current.json" +
-//                "?key=40377b1c488e4a21a83190020221304");
-
-        WebClient webClient = WebClientBuilder.getWebClient("http://api.weatherapi.com/v1/current.json?key=40377b1c488e4a21a83190020221304&q=London&aqi=no");
-
-        Weather test = webClient.post().retrieve().bodyToMono(Weather.class).share().block();
-        System.out.println(test.getCurrent());
     }
 }
