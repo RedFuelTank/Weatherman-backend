@@ -1,10 +1,9 @@
 package com.cgi.weatherman.service;
 
 import com.cgi.weatherman.model.SourceApiKey;
-import com.cgi.weatherman.model.Weather;
+import com.cgi.weatherman.model.WeatherApi;
 import com.cgi.weatherman.repository.SourceApiKeyRepository;
 import com.cgi.weatherman.repository.WeatherRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class WeatherService {
         this.sourceApiKeyRepository = sourceApiKeyRepository;
     }
 
-    public List<Weather> getWeathers() {
+    public List<WeatherApi> getWeathers() {
         return weatherRepository.getAllWeathers();
     }
 

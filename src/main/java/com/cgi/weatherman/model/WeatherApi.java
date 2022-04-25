@@ -6,9 +6,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Weather {
+public class WeatherApi implements Weather{
     Current current;
     Location location;
+
+    @Override
+    public double getTemperatureC() {
+        return current.getTempCelsius();
+    }
 
     @Getter
     public static class Location {
@@ -59,6 +64,8 @@ public class Weather {
 
         @JsonProperty("feelslike_f")
         double feelTempFahrenheit;
+
+        @JsonProperty("wind_kph")
 
 
 

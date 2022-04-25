@@ -8,6 +8,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Component
 public class ApplicationInit implements CommandLineRunner {
     @Autowired
@@ -18,7 +22,9 @@ public class ApplicationInit implements CommandLineRunner {
         WebClient webClient = WebClientBuilder.getWebClient("http://api.weatherapi.com/v1/current.json?key=40377b1c488e4a21a83190020221304&q=London&aqi=no");
 
         SourceApiKey sourceApiKey = new SourceApiKey("test", "http://api.weatherapi.com/v1/current.json?key=40377b1c488e4a21a83190020221304&q=London&aqi=no");
+        SourceApiKey sourceApiKey1 = new SourceApiKey("test1", "HRw2sGdd4lT0CU7y8JHTHLFLPjBfTFg4");
 
-        sourceApiKeyRepository.save(sourceApiKey);
+        List<SourceApiKey> keyApiList = new ArrayList<>(Arrays.asList(sourceApiKey1, sourceApiKey));
+        sourceApiKeyRepository.saveAll(keyApiList);
     }
 }
