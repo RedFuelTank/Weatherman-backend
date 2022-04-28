@@ -22,6 +22,7 @@ bin/
 *.iws
 *.json
 *.yaml
+!src/main/resources/application.yaml
 *.iml
 *.ipr
 out/
@@ -37,3 +38,9 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Database ###
+h2
+
+### Mac files ###
+.DS_Store
