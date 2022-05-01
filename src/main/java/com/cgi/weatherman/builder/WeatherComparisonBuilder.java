@@ -12,7 +12,7 @@ public class WeatherComparisonBuilder {
         WeatherComparison model = new WeatherComparison();
         List<Weather> weathers = weatherDtos.stream().map(WeatherBuilder::buildWeather).collect(Collectors.toList());
         model.setWeathers(weathers);
-        model.setId(userId);
+        model.setUserId(userId);
 
         return model;
     }
