@@ -19,9 +19,10 @@
 
 ### Back-end
 1. SpringBoot
-2. Hibernate
-3. NodeJS
-4. JWT
+2. H2 DB
+3. Hibernate
+4. NodeJS
+5. JWT
 
 ### Front-end
 1. Angular
