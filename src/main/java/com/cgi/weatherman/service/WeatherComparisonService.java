@@ -1,7 +1,6 @@
 package com.cgi.weatherman.service;
 
 import com.cgi.weatherman.builder.WeatherComparisonBuilder;
-import com.cgi.weatherman.documentModel.WeatherApiRepresentation;
 import com.cgi.weatherman.dto.WeatherDto;
 import com.cgi.weatherman.model.WeatherComparison;
 import com.cgi.weatherman.repository.UserRepository;
@@ -25,10 +24,6 @@ public class WeatherComparisonService {
 
     public WeatherComparisonService(WeatherComparisonRepository weatherComparisonRepository) {
         this.weatherComparisonRepository = weatherComparisonRepository;
-    }
-
-    public List<WeatherApiRepresentation> getWeathers() {
-        return weatherComparisonRepository.getAllWeathers();
     }
 
     public List<WeatherComparison> getWeatherComparisons(String token) {
