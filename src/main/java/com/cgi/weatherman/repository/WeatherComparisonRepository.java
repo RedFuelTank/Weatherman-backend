@@ -13,5 +13,6 @@ public interface WeatherComparisonRepository extends JpaRepository<WeatherCompar
     @Query("select u from WeatherComparison u where 1 = 1")
     List<WeatherApiRepresentation> getAllWeathers();
 
-
+    @Query("select u from WeatherComparison u where u.userId = :id")
+    List<WeatherComparison> getAllComparisonsByUser(long id);
 }

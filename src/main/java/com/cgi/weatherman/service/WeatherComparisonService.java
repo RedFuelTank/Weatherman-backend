@@ -3,7 +3,6 @@ package com.cgi.weatherman.service;
 import com.cgi.weatherman.builder.WeatherComparisonBuilder;
 import com.cgi.weatherman.documentModel.WeatherApiRepresentation;
 import com.cgi.weatherman.dto.WeatherDto;
-import com.cgi.weatherman.model.Weather;
 import com.cgi.weatherman.model.WeatherComparison;
 import com.cgi.weatherman.repository.UserRepository;
 import com.cgi.weatherman.repository.WeatherComparisonRepository;
@@ -30,6 +29,13 @@ public class WeatherComparisonService {
 
     public List<WeatherApiRepresentation> getWeathers() {
         return weatherComparisonRepository.getAllWeathers();
+    }
+
+    public List<WeatherComparison> getWeatherComparisons(String token) {
+        String userUsername = tokenProvider.getUsernameFromToken(token);
+
+        return weatherComparisonRepository
+                .getAllComparisonsByUser(userRepository.findByUsername(userUsername).get(0).getId());
     }
 
     public void save(List<WeatherDto> weatherDtos, String token) {

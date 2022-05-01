@@ -1,10 +1,13 @@
 package com.cgi.weatherman.controller;
 
+import com.cgi.weatherman.model.WeatherComparison;
 import com.cgi.weatherman.model.WeatherWrapper;
 import com.cgi.weatherman.service.WeatherComparisonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import static com.cgi.weatherman.security.ApplicationRoles.USER;
 
@@ -16,7 +19,10 @@ public class ComparisonController {
     WeatherComparisonService weatherComparisonService;
 
     @GetMapping()
-    public void getComparisonsByUser() {}
+    @Secured(USER)
+    public List<WeatherComparison> getComparisons(@RequestHeader("Authorization") String authorToken) {
+        return weatherComparisonService.getWeatherComparisons(authorToken.substring(7));
+    }
 
     @PostMapping()
     @Secured(USER)
