@@ -29,3 +29,15 @@ spring:
       # this enables http://localhost:8080/api/h2-console
       # username/password are sa (defined few lines above)
       enabled: true
+
+app:
+  jwt:
+    secret: c2VjcmV0
+    duration-min: 30
+
+  users:
+    userName: user
+    userPassword: user
+    adminName: admin
+    adminPassword: admin
+
