@@ -1,10 +1,10 @@
 package com.cgi.weatherman.controller;
 
-import com.cgi.weatherman.builder.WeatherBuilder;
+import com.cgi.weatherman.builder.WeatherRepresentationBuilder;
 import com.cgi.weatherman.dto.WeatherDto;
 import com.cgi.weatherman.parsers.AccuParser;
 import com.cgi.weatherman.parsers.WeatherApiParser;
-import com.cgi.weatherman.service.WeatherService;
+import com.cgi.weatherman.service.WeatherComparisonService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,16 +12,18 @@ import java.util.List;
 @RequestMapping("/weather")
 @RestController
 public class WeatherController {
-    final WeatherService weatherService;
+    final WeatherComparisonService weatherComparisonService;
 
-    public WeatherController(WeatherService weatherService) {
-        this.weatherService = weatherService;
+    public WeatherController(WeatherComparisonService weatherComparisonService) {
+        this.weatherComparisonService = weatherComparisonService;
     }
 
     @GetMapping()
     public List<WeatherDto> getWeatherBySource(@RequestParam double lat, @RequestParam double lon) {
         return List.of(
-                WeatherBuilder.buildWeatherDto(new AccuParser(lat, lon).getData()),
-                WeatherBuilder.buildWeatherDto(new WeatherApiParser(lat, lon).getData()));
+                WeatherRepresentationBuilder.buildWeatherRepresentation(new AccuParser(lat, lon).getData()),
+                WeatherRepresentationBuilder.buildWeatherRepresentation(new WeatherApiParser(lat, lon).getData()));
     }
+
+
 }

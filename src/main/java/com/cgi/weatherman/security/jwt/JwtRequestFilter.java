@@ -2,6 +2,7 @@ package com.cgi.weatherman.security.jwt;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -76,6 +77,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     }
 
     private Optional<String> getToken(HttpServletRequest request) {
+
         String header = request.getHeader(AUTHORIZATION);
 
         if (header == null || !header.startsWith(BEARER)) {

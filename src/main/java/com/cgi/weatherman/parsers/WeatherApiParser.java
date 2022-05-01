@@ -1,8 +1,8 @@
 package com.cgi.weatherman.parsers;
 
 import com.cgi.weatherman.builder.WebClientBuilder;
-import com.cgi.weatherman.model.Weather;
-import com.cgi.weatherman.model.WeatherApi;
+import com.cgi.weatherman.documentModel.WeatherRepresentation;
+import com.cgi.weatherman.documentModel.WeatherApiRepresentation;
 import org.springframework.web.reactive.function.client.WebClient;
 
 public class WeatherApiParser implements Parser{
@@ -14,7 +14,7 @@ public class WeatherApiParser implements Parser{
                         String.format("?key=40377b1c488e4a21a83190020221304&q=%s,%s&aqi=no", lat, lon));
     }
 
-    public Weather getData() {
-        return this.webClient.post().retrieve().bodyToMono(WeatherApi.class).share().block();
+    public WeatherRepresentation getData() {
+        return this.webClient.post().retrieve().bodyToMono(WeatherApiRepresentation.class).share().block();
     }
 }

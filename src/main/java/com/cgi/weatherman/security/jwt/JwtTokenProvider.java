@@ -51,7 +51,7 @@ public class JwtTokenProvider {
     public static void main(String[] args) {
         long currentTimeMs = System.currentTimeMillis();
         String jwtToken = Jwts.builder()
-                .setSubject("danila")
+                .setSubject("admin")
                 .addClaims(new HashMap<>())
                 .setIssuedAt(new Date(currentTimeMs))
                 .setExpiration(new Date(currentTimeMs + 5 * 60 * 1000))

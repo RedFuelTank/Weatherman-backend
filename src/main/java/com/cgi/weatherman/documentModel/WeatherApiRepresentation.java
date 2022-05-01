@@ -1,4 +1,4 @@
-package com.cgi.weatherman.model;
+package com.cgi.weatherman.documentModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class WeatherApi implements Weather{
+public class WeatherApiRepresentation implements WeatherRepresentation {
     Current current;
     Location location;
 

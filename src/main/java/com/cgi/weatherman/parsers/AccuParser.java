@@ -1,8 +1,8 @@
 package com.cgi.weatherman.parsers;
 
 import com.cgi.weatherman.builder.WebClientBuilder;
-import com.cgi.weatherman.model.AccuWeather;
-import com.cgi.weatherman.model.Weather;
+import com.cgi.weatherman.documentModel.AccuWeatherRepresentation;
+import com.cgi.weatherman.documentModel.WeatherRepresentation;
 import org.springframework.web.reactive.function.client.WebClient;
 
 public class AccuParser implements Parser{
@@ -14,8 +14,8 @@ public class AccuParser implements Parser{
                         String.format("?lat=%s&lon=%s", lat, lon));
     }
 
-    public Weather getData() {
-        return webClientAccu.post().retrieve().bodyToMono(AccuWeather.class).share().block();
+    public WeatherRepresentation getData() {
+        return webClientAccu.post().retrieve().bodyToMono(AccuWeatherRepresentation.class).share().block();
     }
 
 }

@@ -1,7 +1,7 @@
 package com.cgi.weatherman.parsers;
 
-import com.cgi.weatherman.model.Weather;
+import com.cgi.weatherman.documentModel.WeatherRepresentation;
 
 public interface Parser {
-    Weather getData();
+    WeatherRepresentation getData();
 }

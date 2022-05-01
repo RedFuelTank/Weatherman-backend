@@ -1,10 +1,10 @@
-package com.cgi.weatherman.model;
+package com.cgi.weatherman.documentModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class AccuWeather implements Weather {
+public class AccuWeatherRepresentation implements WeatherRepresentation {
     @JsonProperty("properties")
     Properties properties;
     @Override

@@ -3,21 +3,19 @@ package com.cgi.weatherman.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
 public class WeatherComparison {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Long userId;
 
-    @Id
-    public Long getId() {
-        return id;
-    }
+    @OneToMany
+    private List<Weather> weathers;
 }
