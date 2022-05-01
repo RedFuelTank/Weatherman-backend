@@ -6,7 +6,7 @@
 
 1. Clone the project to the desired directory using i.e. ```https://gitlab.cs.ttu.ee/danrom/weatherman-backend.git```
 2. Install packages with ```npm install``` or ```npm i```
-3. Start server running [WeathermanApplication][src/main/java/com/cgi/weatherman/WeathermanApplication.java]
+3. Start server running ```WeathermanApplication```
 
 ### 2. How to run GUI
 
