@@ -18,8 +18,10 @@ public class WeatherController {
         this.weatherService = weatherService;
     }
 
-    @GetMapping("{sourceId}")
-    public List<WeatherDto> getWeatherBySource(@PathVariable int sourceId, @RequestParam double lat, @RequestParam double lon) {
-        return List.of(WeatherBuilder.buildWeatherDto(AccuParser.getData()), WeatherBuilder.buildWeatherDto(WeatherApiParser.getData()));
+    @GetMapping()
+    public List<WeatherDto> getWeatherBySource(@RequestParam double lat, @RequestParam double lon) {
+        return List.of(
+                WeatherBuilder.buildWeatherDto(new AccuParser(lat, lon).getData()),
+                WeatherBuilder.buildWeatherDto(new WeatherApiParser(lat, lon).getData()));
     }
 }
